@@ -1,3 +1,3 @@
 #!/bin/bash
 
-source bootstrap.sh -f
+source ~/dotfiles/bootstrap.sh -f
