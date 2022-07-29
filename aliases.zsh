@@ -6,6 +6,3 @@ alias rc="$EDITOR $HOME/.zshrc"
 alias rcr="source $HOME/.zshrc"
 alias ale="$EDITOR $HOME/.oh-my-zsh/custom/aliases.zsh"
 
-# WSL Windows Programs
-alias google-chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe --profile-directory=\"Profile 1\""
-
