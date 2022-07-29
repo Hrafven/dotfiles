@@ -6,6 +6,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 sudo pacman -Sy --needed --noconfirm \
 	curl \
 	emacs \
+	fontconfig \
 	git \
 	wget \
 	ripgrep \
@@ -16,6 +17,14 @@ git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts "$
 git -C "$HOME"/nerdfonts sparse-checkout add patched-fonts/Hack
 "$HOME"/nerdfonts/install.sh Hack
 rm -rf "$HOME"/nerdfonts
+
+# asdf
+if [ -d "$HOME"/.asdf ]; then
+	echo "warning: asdf-vm already exists -- updating"
+	"$HOME"/.asdf/bin/asdf update
+else
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+fi
 
 # omz
 if [ -d "$ZSH" ]; then
