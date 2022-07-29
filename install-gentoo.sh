@@ -37,6 +37,10 @@ ln -s -f "$SCRIPT_DIR"/.p10k.zsh -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/.zshrc -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/.alacritty.yml -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/aliases.zsh -t "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+if [ -d "$HOME"/.scripts ]; then
+	rm -rf "$HOME"/.scripts
+fi
+ln -s -f "$SCRIPT_DIR"/.scripts "$HOME"/.scripts
 
 echo "source $HOME/.zshrc to apply configuration"
 
