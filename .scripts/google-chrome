@@ -5,7 +5,7 @@ FILE_DIR=$(cd "$(dirname "$1")" && pwd)
 if [[ $1 = http* ]]; then
 	file="$1"
 else
-	file="file://wsl.localhost/Gentoo$FILE_DIR/$1"
+	file="file://wsl.localhost/Artix/$FILE_DIR/$1"
 fi
 
 /mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe "$file"

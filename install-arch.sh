@@ -5,11 +5,9 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 # dependencies
 sudo pacman -Sy --needed --noconfirm \
 	curl \
-	emacs \
+	jq \
 	fontconfig \
-	git \
-	wget \
-	ripgrep \
+	neofetch \
 	zsh
 
 # nerd fonts
@@ -42,25 +40,27 @@ else
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 fi
 
-# emacs doom
-if [ -d "$HOME"/.emacs.d ]; then
-	echo "warning: doomemacs already exists -- updating"
-	"$HOME"/.emacs.d/bin/doom upgrade -!
+# base16-shell
+if [ -d "$HOME"/.config/base16-shell ]; then
+	echo "warning: base16-shell already exists -- updating"
+	git -C "$HOME"/.config/base16-shell pull
 else
-	git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME"/.emacs.d
-	"$HOME"/.emacs.d/bin/doom install -!
+	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 fi
 
 # dotfiles
-ln -s -f "$SCRIPT_DIR"/.p10k.zsh -t "$HOME"
-ln -s -f "$SCRIPT_DIR"/.zshrc -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/.alacritty.yml -t "$HOME"
+ln -s -f "$SCRIPT_DIR"/.p10k.zsh -t "$HOME"
+ln -s -f "$SCRIPT_DIR"/neofetch.conf -t "$HOME/.config/neofetch"
+ln -s -f "$SCRIPT_DIR"/.zprofile -t "$HOME"
+ln -s -f "$SCRIPT_DIR"/.zshrc -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/aliases.zsh -t "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-if [ -d "$HOME"/.doom.d ]; then
-	rm -rf "$HOME"/.doom.d
+if [ -d "$HOME"/.scripts ]; then
+	rm -rf "$HOME"/.scripts
 fi
-mkdir "$HOME"/.doom.d
-ln -s -f "$SCRIPT_DIR"/.doom.d/*.el -t "$HOME"/.doom.d
+ln -s -f "$SCRIPT_DIR"/.scripts "$HOME"/.scripts
+
+mv "$HOME"/.config/neofetch/neofetch.conf "$HOME"/.config/neofetch/config.conf
 
 echo "source $HOME/.zshrc to apply configuration"
 
