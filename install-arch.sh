@@ -5,9 +5,17 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 # dependencies
 sudo pacman -Sy --needed --noconfirm \
 	curl \
-	jq \
 	fontconfig \
+	git \
+	glibc \
+	gnupg \
+	jq \
+	libice \
+	libsm \
 	neofetch \
+	pass \
+	wget \
+	xdg-utils \
 	zsh
 
 # nerd fonts
