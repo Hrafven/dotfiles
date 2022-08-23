@@ -13,6 +13,7 @@ sudo pacman -Sy --needed --noconfirm \
 	libice \
 	libsm \
 	neofetch \
+	neovim \
 	pass \
 	wget \
 	xdg-utils \
