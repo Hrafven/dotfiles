@@ -57,13 +57,18 @@ else
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 fi
 
+# create necessary directories
+mkdir -p "$HOME"/.config/nvim/lua
+
 # dotfiles
 ln -s -f "$SCRIPT_DIR"/.alacritty.yml -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/.p10k.zsh -t "$HOME"
-ln -s -f "$SCRIPT_DIR"/neofetch.conf -t "$HOME/.config/neofetch"
 ln -s -f "$SCRIPT_DIR"/.zprofile -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/.zshrc -t "$HOME"
 ln -s -f "$SCRIPT_DIR"/aliases.zsh -t "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+ln -s -f "$SCRIPT_DIR"/init.vim -t "$HOME/.config/nvim"
+ln -s -f "$SCRIPT_DIR"/init.lua -t "$HOME/.config/nvim/lua"
+ln -s -f "$SCRIPT_DIR"/neofetch.conf -t "$HOME/.config/neofetch"
 if [ -d "$HOME"/.scripts ]; then
 	rm -rf "$HOME"/.scripts
 fi
