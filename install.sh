@@ -15,6 +15,7 @@ sudo pacman -Sy --needed --noconfirm \
 	neofetch \
 	neovim \
 	pass \
+  universal-ctags \
 	wget \
 	xdg-utils \
 	zsh
