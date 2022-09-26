@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
+  use 'RRethy/nvim-base16'
   use 'neovim/nvim-lspconfig'
   use { 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end, }
@@ -28,13 +28,8 @@ return require('packer').startup(function(use)
       autocmd BufWritePost init.lua source <afile> | PackerCompile
     augroup end
   ]])
-  require("gruvbox").setup({
-    contrast = "hard",
-    transparent_mode = true,
-  })
   vim.cmd("set termguicolors")
-  vim.o.background = "dark"
-  vim.cmd("colorscheme gruvbox")
+  vim.cmd("colorscheme base16-monokai")
   vim.cmd("set number")
   vim.cmd("set expandtab")
   vim.cmd("set shiftwidth=2")
